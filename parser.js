@@ -10,19 +10,17 @@ async function checkPrice() {
     .wait("#module_product_price_1")
     .evaluate(() => {
       const texts = [];
-      texts.push(
-        document
-          .getElementById("module_product_title_1")
-          .innerText.trim()
-          .replace(/\n/g, "")
-      );
-      texts.push(
-        document
-          .getElementById("module_product_price_1")
-          .innerText.trim()
-          .replace("Rs. ", "")
-          .replace(/\n/g, "")
-      );
+      const title = document
+        .getElementById("module_product_title_1")
+        .innerText.trim()
+        .replace(/\n/g, "");
+      const price = document
+        .getElementById("module_product_price_1")
+        .innerText.trim()
+        .replace("Rs. ", "")
+        .replace(/\n/g, "");
+      texts.push(title);
+      texts.push(price);
       return texts;
     })
     .end();
